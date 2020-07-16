@@ -7,7 +7,7 @@ const config = require('../knexfile');
 const db = knex(config.development);
 module.exports = {
     addUser, getUsers, getUser, addBook, getBook, getBooks,
-    addBorrowBook, returnBook, setScore, getStatus
+    addBorrowBook, returnBook, setScore, getStatus, getUserHistory
 };
 
 
@@ -29,6 +29,10 @@ function getUsers() {
 function getUser(id) {
     return db("users").where({ id }).first();
 }
+function getUserHistory(id) {
+    return db("borrow_book").where({ u_id: id }).first();
+}
+
 function getBooks() {
     return db("books");
 }
