@@ -11,7 +11,6 @@ exports.up = function (knex) {
             table.string('title', 128).notNullable();
             table.string('author', 128).notNullable();
             table.string('desc', 128)
-            table.integer('score');
 
             //Kitap ödünç tarihi verilmişse kullanılabilir.
             //table.timestamps(true, true)

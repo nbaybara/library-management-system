@@ -20,11 +20,12 @@ router.post("/users/:u_id/return/:b_id", (req, res) => {
         }
     })
 
+
     Users.getUser(u_id).then(user => {
         if (!user) {
             res.status(404).json({ message: "Kullanıcı bulunamadı!" });
         }
-        Users.returnBook(returnB, u_id, b_id)
+        Users.returnBook(returnB, u_id, b_id, status)
             .then(user => {
                 if (user) {
                     res.status(200).json(user);

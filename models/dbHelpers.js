@@ -7,7 +7,7 @@ const config = require('../knexfile');
 const db = knex(config.development);
 module.exports = {
     addUser, getUsers, getUser, addBook, getBook, getBooks,
-    addBorrowBook, returnBook, setScore, getStatus, getUserHistory
+    addBorrowBook, returnBook, getStatus, getUserHistory
 };
 
 
@@ -56,14 +56,8 @@ async function addBorrowBook(borrowB, u_id, b_id) {
     return getBook(b_id)
 }
 
-function setScore(id, score) {
-    //Score update olmuyor!!!
-    console.log(id, score);
-    return db("books").where({ id: id }).update({ score: score });
-}
 
-function returnBook(returnB, u_id, b_id) {
-    setScore(b_id, returnB.status,);
+function returnBook(returnB, u_id, b_id, status) {
 
     return db("borrow_book")
         .where({ b_id: b_id })

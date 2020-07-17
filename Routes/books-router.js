@@ -8,7 +8,6 @@ const { body, validationResult } = require('express-validator');
 router.post("/", [body('title').isString(),
 body('author').isLength({ min: 3 }),
 body('desc').isString(),
-body('score').isInt()
 
 ], (req, res, next) => {
     try {

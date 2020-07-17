@@ -6,7 +6,6 @@ router.post("/users/:u_id/borrow/:b_id", (req, res) => {
     const { u_id } = req.params;
     const { b_id } = req.params;
     const borrowB = req.body;
-    console.log("router try")
     if (!borrowB.user_id) {
         borrowB["u_id"] = parseInt(u_id, 10)
         borrowB["b_id"] = parseInt(b_id, 10)
