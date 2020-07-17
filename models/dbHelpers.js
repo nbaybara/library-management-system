@@ -29,8 +29,10 @@ function getUsers() {
 function getUser(id) {
     return db("users").where({ id }).first();
 }
-function getUserHistory(id) {
-    return db("borrow_book").where({ u_id: id }).first();
+function getUserHistory(b_id) {
+    return db("borrow_book").join('books', 'b_id', '=', 'books.id').join('users', 'b_id', '=', 'users.id')
+        .where({ b_id: b_id }).select('title', 'name', "status");
+
 }
 
 function getBooks() {

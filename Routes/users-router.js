@@ -30,9 +30,7 @@ router.get("/history/:id", (req, res) => {
                 res.status(500).json({ message: "Geçmiş bulunamadı" });
             }
         })
-        .catch(error => {
-            res.status(500).json({ message: "Geçmiş getirilemedi" });
-        });
+
 
 });
 router.get("/", (req, res) => {
@@ -52,7 +50,6 @@ router.get("/:id", (req, res) => {
 
     Users.getUser(id)
         .then(user => {
-
             if (user) {
                 res.status(200).json(user)
             }
